@@ -10,7 +10,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.css" rel="stylesheet" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js"></script>
     <style>
-        /* (Existing styles remain the same) */
+        /* Existing styles... */
         body, html {
             height: 100%;
             margin: 0;
@@ -29,11 +29,10 @@
         .container {
             display: flex;
             flex-direction: column;
-            justify-content: flex-end;
             align-items: center;
             height: calc(100vh - 80px);/* Subtract nav height */
             margin-top: 64px; /* Account for nav height */
-            padding-left: 120px;
+            padding-left: 180px;
         }
 
         .box {
@@ -44,7 +43,7 @@
         }
 
         .upper {
-            flex-grow: 0.8;
+            flex-grow: 1;
             overflow-y: auto;
             padding-top: 20px;
         }
@@ -54,11 +53,14 @@
         }
 
         .bottom {
-            position: relative;
-            bottom: 0;
-            padding-bottom: 0%;
+            /* Remove position relative and bottom properties */
+            /* position: relative; */
+            /* bottom: 0; */
+            padding-bottom: 12%;
             width: 100%;
             background-color: white;
+            /* Add flex-shrink: 0 to prevent it from shrinking */
+            flex-shrink: 0;
         }
 
         .message {
