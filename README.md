@@ -114,8 +114,8 @@ gemclass/
 
 ## Planned Updates
 
-- Allow user to specifically choose lectures for AI to answer
+- Allow user to specifically choose from which specific lectures for each class the AI should base its answer off from (it currently uses every single lecture) 
 - Reset functionality to start fresh conversations
-- Streamlining process to make adding classess more user-friendly
+- Streamlining process to make adding different classess more user-friendly
 - Conversation history management
 
