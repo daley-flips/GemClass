@@ -12,7 +12,6 @@ GemClass is an AI-powered tutoring system that uses Google's Generative AI to pr
 6. [Usage](#usage)
 7. [Customization](#customization)
 8. [Planned Updates](#planned-updates)
-9. [License](#license)
 
 ## Project Overview
 
