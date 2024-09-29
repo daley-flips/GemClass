@@ -14,6 +14,7 @@ def index():
 @app.route('/data', methods=['POST'])
 def get_data():
     global conversation_history
+    first_time = True
     data = request.get_json()
     user_input = data.get('data')
     selected_course = data.get('course', 'Harvard CS50')  # Default to 'Harvard CS50' if not provided
@@ -38,9 +39,10 @@ def get_data():
 # instead of calling the generate_text function, call whichever model is implemented
 # =========================================================================================
         # Generate the assistant's response
-        response_text = generate_text(conversation_text)
+        response_text = generate_text(conversation_text, selected_course, first_time)
+        first_time = False
         # Prepend the selected course to the assistant's response
-        response_text = f"model {selected_course} here... {response_text}"
+        # response_text = f"model {selected_course} here... {response_text}"
 # =========================================================================================
 #
 #
@@ -48,6 +50,7 @@ def get_data():
 # =========================================================================================
         # Append the assistant's response to the conversation history
         conversation_history.append({'author': 'assistant', 'content': response_text})
+        # print(response_text)
 
         return jsonify({"response": True, "message": response_text})
     except Exception as e:
@@ -60,4 +63,4 @@ def get_data():
 #
 # =========================================================================================
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=True)

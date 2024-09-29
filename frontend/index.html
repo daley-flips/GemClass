@@ -9,6 +9,7 @@
     <title>GemClass</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.css" rel="stylesheet" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/4.0.2/marked.min.js"></script>
     <style>
         /* Existing styles... */
         body, html {
@@ -276,22 +277,29 @@
                     </div>
                 </div>`
                 let temp = document.getElementById('temp')
-                let index = 0
-                function displayNextLetter() {
+                
+                // Use marked library to parse markdown
+                const parsedMessage = marked.parse(message);
+                
+                // Use a faster typing effect
+                let index = 0;
+                const typingInterval = 20; // Adjust this value to change typing speed (lower is faster)
+                
+                function displayNextChunk() {
                     scrollToBottom()
-                    if (index < message.length) {
-                        temp.innerHTML += message[index];
-                        index++;
-                        setTimeout(displayNextLetter, 30);
+                    if (index < parsedMessage.length) {
+                        const chunkSize = 5; // Adjust this value to change the amount of text added each time
+                        temp.innerHTML = parsedMessage.slice(0, index + chunkSize);
+                        index += chunkSize;
+                        setTimeout(displayNextChunk, typingInterval);
                     } else {
                         temp.removeAttribute('id')
                         sendbtn.disabled = false
                         userinputarea.disabled = false
                     }
                 }
-                displayNextLetter()
+                displayNextChunk()
                 scrollToBottom()
-
             } else {
                 let message = json.message
                 upperdiv.innerHTML += `<div class="message">
